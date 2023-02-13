@@ -15,6 +15,6 @@
     color: purple;
 
 }
-.item active{
-
+.active{
+    color :green;
 }

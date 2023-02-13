@@ -1,4 +1,9 @@
 .dialogs{
-    width: 100%;
-    background-color: hotpink;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.name{
+    display: flex;
+    flex-direction: column;
 }
