@@ -1,18 +1,18 @@
+/*
 .app-wrapper {
     display: grid;
+    justify-content: center;
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    width:1200px;
+    width: 80%;
     grid-gap: 10px;
     grid-template-areas:
     "h h h "
     "n c c ";
 }
 
-.header {
-    grid-area: h;
-    background-color: blue;
-}
+
+
 .header img {
     width: 50px;
     height: 50px;
@@ -28,7 +28,25 @@
     background-color: blueviolet;
 
 }
-.content img{
-    width:80% ;
+
+.content img {
+    width: 80%;
     height: 80%;
+}
+*/
+.app-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    gap:10px;
+
+
 }
