@@ -1,14 +1,22 @@
 import React from 'react';
-import s from "./Profile.module.css"
 import {MyPosts} from "../myPosts/MyPosts";
 import style from "./../../common/Container.module.css"
-export const Profile = () => {
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {PostsType} from "../../App";
+
+
+type ProfileType = {
+    posts: PostsType[]
+}
+export const Profile = (props:ProfileType) => {
+
+
+
     return (
         <div className={style.container}>
-            <div className={s.img}><textarea></textarea>
-                <button>add posts</button>
-            </div>
-            <MyPosts/>
+            <ProfileInfo/>
+
+            <MyPosts posts={props.posts}/>
         </div>
     );
 };

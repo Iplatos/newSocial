@@ -1,25 +1,30 @@
 import React from 'react';
 import s from "./../../common/Container.module.css"
 import style from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
+import {Message} from "./Message/Message";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {DialogsType, MessagesType} from "../../App";
 
-export const Dialogs = () => {
+type DialogsPropsType={
+    dialogs: DialogsType[]
+    messages:MessagesType[]
+}
+
+export const Dialogs = (props:DialogsPropsType) => {
+
     return (
         <div className={s.container}>
             <div className={style.dialogs}>
                 <div className={style.name}>
-                    <NavLink to={"dialogs/1"}>petya S</NavLink>
-                    <NavLink to={"dialogs/2"}>petya W</NavLink>
-                    <NavLink to={"dialogs/3"}>petya B</NavLink>
-                    <NavLink to={"dialogs/4"}>petya R</NavLink>
-
+                    {props.messages.map(user => <DialogItem key={user.id} id={user.id} userName={user.userName}/>)}
                 </div>
                 <div className={style.message}>
-                    <div>nu 4e</div>
-                    <div>kak ono</div>
+                    {props.dialogs.map(m=> <Message key={m.text} message={m.text}/> )}
+
                 </div>
             </div>
         </div>
     );
 };
+
 
