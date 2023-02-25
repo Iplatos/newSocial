@@ -7,6 +7,8 @@ import {PostsType} from "../../App";
 
 type ProfileType = {
     posts: PostsType[]
+    newPostText:string
+    changeText:(t:string)=>void
 }
 export const Profile = (props:ProfileType) => {
 
@@ -16,7 +18,7 @@ export const Profile = (props:ProfileType) => {
         <div className={style.container}>
             <ProfileInfo/>
 
-            <MyPosts posts={props.posts}/>
+            <MyPosts newPostText={props.newPostText} changeText={props.changeText} posts={props.posts}/>
         </div>
     );
 };

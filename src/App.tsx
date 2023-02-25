@@ -14,6 +14,9 @@ import {Settings} from "./components/Settings/Settings";
          messages: MessagesType[]
          posts: PostsType[]
          dialogs: DialogsType[]
+     newPostText:string
+     changeText:(t:string)=>void
+
 }
 export type MessagesType ={
     id:number
@@ -30,6 +33,8 @@ export type State = {
     messages: MessagesType[]
     posts: PostsType[]
     dialogs: DialogsType[]
+    newPostText:string
+    changeText:(t:string)=>void
 }
 
 function App(props:State) {
@@ -41,7 +46,7 @@ function App(props:State) {
                 <div className={"container"}>
                     <Navbar/>
                 <Routes>
-                    <Route path={"profile"} element={<Profile posts={props.posts}/>} />
+                    <Route path={"profile"} element={<Profile posts={props.posts} changeText={props.changeText} newPostText={props.newPostText}/>} />
                     <Route path={"dialogs/*"} element={<Dialogs messages={props.messages} dialogs={props.dialogs}/>} />
                     <Route path={"news"} element={<News/>} />
                     <Route path={"music"} element={<Music/>} />
