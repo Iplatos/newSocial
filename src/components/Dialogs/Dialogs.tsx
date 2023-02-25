@@ -8,6 +8,9 @@ import {DialogsType, MessagesType} from "../../App";
 type DialogsPropsType={
     dialogs: DialogsType[]
     messages:MessagesType[]
+    changeMessage:(t:string)=>void
+    newMessage:string
+    dispatch:(action:any)=>any
 }
 
 export const Dialogs = (props:DialogsPropsType) => {
@@ -20,7 +23,8 @@ export const Dialogs = (props:DialogsPropsType) => {
                 </div>
                 <div className={style.message}>
                     {props.dialogs.map(m=> <Message key={m.text} message={m.text}/> )}
-
+                    <input value={props.newMessage} onChange={(e)=>props.changeMessage(e.currentTarget.value)}/>
+                    <button onClick={()=>props.dispatch({type:"ADD-Message"})} >add</button>
                 </div>
             </div>
         </div>

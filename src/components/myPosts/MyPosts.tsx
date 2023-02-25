@@ -8,6 +8,7 @@ type PropsType = {
     newPostText:string
     changeText:(t:string)=>void
     addPost:(t:string)=>void
+    dispatch:(action:any)=>any
 }
 
 export const MyPosts = (props: PropsType) => {
@@ -21,7 +22,7 @@ export const MyPosts = (props: PropsType) => {
     const addPostClick = (e: RefObject<HTMLTextAreaElement>) => {
             let text = e.current?.value
         if (text) {
-            props.addPost(text)
+            props.dispatch({type:"ADD-POST"})
             // @ts-ignore
             newPostElement.current.value = ""
         }

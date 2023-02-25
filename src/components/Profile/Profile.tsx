@@ -10,6 +10,7 @@ type ProfileType = {
     newPostText:string
     changeText:(t:string)=>void
     addPost:(t:string)=>void
+    dispatch:(action:any)=>any
 }
 export const Profile = (props:ProfileType) => {
 
@@ -19,7 +20,7 @@ export const Profile = (props:ProfileType) => {
         <div className={style.container}>
             <ProfileInfo/>
 
-            <MyPosts newPostText={props.newPostText} changeText={props.changeText} addPost = {props.addPost} posts={props.posts}/>
+            <MyPosts dispatch={props.dispatch} newPostText={props.newPostText} changeText={props.changeText} addPost = {props.addPost} posts={props.posts}/>
         </div>
     );
 };

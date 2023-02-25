@@ -9,6 +9,7 @@ export const store:AppPropsType = {
         posts:[{message: "like", likesCount: 14},{message: "asda", likesCount: 314},{message: "kringe", likesCount: 124} ],
         dialogs:[{text:'asd'},{text:'assd'},{text:'asdaaaa'},{text:'asdddd'},{text:'asqwed'}],
         newPostText:"kama",
+        newMessage: "message"
     },
     getState(){
         return this._state
@@ -16,7 +17,14 @@ export const store:AppPropsType = {
     changeText(text:string){
         store._state.newPostText=text
         rerenderEntireTree()
-}, rerenderEntireTree(){
+
+},
+    changeMessage(text:string){
+        store._state.newMessage=text
+        rerenderEntireTree()
+
+    },
+    rerenderEntireTree(){
         console.log("./rerenderEntireTree")
     }  ,
     addPost(text:string) {
@@ -28,6 +36,17 @@ export const store:AppPropsType = {
     },
     subscribe(observer:any){
         rerenderEntireTree = observer
+    }, dispatch(action:any){
+if (action.type == "ADD-POST"){
+    let newPost = {message:store._state.newPostText, likesCount:0 }
+    store._state = {...store._state, posts:[newPost , ...store._state.posts]}
+    console.log(store._state)
+    rerenderEntireTree()
+}if (action.type == "ADD-Message"){
+    const newMessage = {text:store.getState().newMessage}
+            store._state={...store._state, dialogs:[newMessage ,...store._state.dialogs]}
+            rerenderEntireTree()
+        }
     }
 }
 
