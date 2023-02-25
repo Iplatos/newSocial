@@ -9,6 +9,7 @@ type ProfileType = {
     posts: PostsType[]
     newPostText:string
     changeText:(t:string)=>void
+    addPost:(t:string)=>void
 }
 export const Profile = (props:ProfileType) => {
 
@@ -18,7 +19,7 @@ export const Profile = (props:ProfileType) => {
         <div className={style.container}>
             <ProfileInfo/>
 
-            <MyPosts newPostText={props.newPostText} changeText={props.changeText} posts={props.posts}/>
+            <MyPosts newPostText={props.newPostText} changeText={props.changeText} addPost = {props.addPost} posts={props.posts}/>
         </div>
     );
 };

@@ -1,12 +1,13 @@
 import React, {ChangeEvent, RefObject} from 'react';
 import {Post} from "./Post/Post";
 import {PostsType} from "../../App";
-import {addPost} from "../../Redux/State";
+
 
 type PropsType = {
     posts: PostsType[]
     newPostText:string
     changeText:(t:string)=>void
+    addPost:(t:string)=>void
 }
 
 export const MyPosts = (props: PropsType) => {
@@ -20,7 +21,7 @@ export const MyPosts = (props: PropsType) => {
     const addPostClick = (e: RefObject<HTMLTextAreaElement>) => {
             let text = e.current?.value
         if (text) {
-            addPost(text)
+            props.addPost(text)
             // @ts-ignore
             newPostElement.current.value = ""
         }
