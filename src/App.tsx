@@ -8,7 +8,7 @@ import {Route, Routes} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-// 33 v 7m
+// 40
 
 export type AppPropsType = {
     _state: State
@@ -42,7 +42,6 @@ export type State = {
 function App(props: any) {
 
     const {store} = props
-    console.log(store)
     return (
 
         <div className="app-wrapper">
@@ -56,7 +55,7 @@ function App(props: any) {
                                                               newPostText={store.getState().newPostText}/>}/>
                     <Route path={"dialogs/*"} element={<Dialogs dispatch={store.dispatch} messages={store.getState().messages}
                                                                 dialogs={store.getState().dialogs}
-                    changeMessage={store.changeMessage} newMessage={store.newMessage}
+                    changeMessage={store.changeMessage} newMessage={store.getState().newMessage}
                     />}/>
                     <Route path={"news"} element={<News/>}/>
                     <Route path={"music"} element={<Music/>}/>

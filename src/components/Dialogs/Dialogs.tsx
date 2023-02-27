@@ -14,12 +14,14 @@ type DialogsPropsType={
 }
 
 export const Dialogs = (props:DialogsPropsType) => {
+  const dialogElement =  props.messages.map(user => <DialogItem key={user.id} id={user.id} userName={user.userName}/>)
+
 
     return (
         <div className={s.container}>
             <div className={style.dialogs}>
                 <div className={style.name}>
-                    {props.messages.map(user => <DialogItem key={user.id} id={user.id} userName={user.userName}/>)}
+                    {dialogElement}
                 </div>
                 <div className={style.message}>
                     {props.dialogs.map(m=> <Message key={m.text} message={m.text}/> )}

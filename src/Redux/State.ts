@@ -41,10 +41,12 @@ if (action.type == "ADD-POST"){
     let newPost = {message:store._state.newPostText, likesCount:0 }
     store._state = {...store._state, posts:[newPost , ...store._state.posts]}
     console.log(store._state)
+    store._state.newPostText = ""
     rerenderEntireTree()
 }if (action.type == "ADD-Message"){
     const newMessage = {text:store.getState().newMessage}
             store._state={...store._state, dialogs:[newMessage ,...store._state.dialogs]}
+            store._state.newMessage = ""
             rerenderEntireTree()
         }
     }
