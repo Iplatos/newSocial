@@ -19,7 +19,9 @@ export const profileReducer = (state:initialStateType=initialState , action:any)
         console.log(store._state)
         store._state.newPostText = ""
         return state
-
+        case "UPDATE_NEW_POST_TEXT":
+            store.getState().newPostText = action.newText
+            return state
         default:
     return state
 } }

@@ -5,7 +5,7 @@ import {dialogsReducer} from "./DialogsReducer";
      console.log("./rerenderEntireTree")
  }  ;
 console.log("state")
-export const store:AppPropsType = {
+export const store = {
     _state:{
         messages:[{id:1, userName:"kirila"},{id:2, userName:"kirild"},{id:3, userName:"kirils"},{id:4, userName:"kirild"}],
         posts:[{message: "like", likesCount: 14},{message: "asda", likesCount: 314},{message: "kringe", likesCount: 124} ],
@@ -39,7 +39,7 @@ export const store:AppPropsType = {
     subscribe(observer:any){
         rerenderEntireTree = observer
     }, dispatch(action:any){
-        dialogsReducer(store.getState, action)
+        dialogsReducer(store.getState().dialogs, action)
 /*if (action.type == "ADD-POST"){
     let newPost = {message:store._state.newPostText, likesCount:0 }
     store._state = {...store._state, posts:[newPost , ...store._state.posts]}
