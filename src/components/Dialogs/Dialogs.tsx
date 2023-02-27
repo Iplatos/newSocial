@@ -4,6 +4,7 @@ import style from "./Dialogs.module.css"
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {DialogsType, MessagesType} from "../../App";
+import {addMessageAC, dialogsReducer} from "../../Redux/DialogsReducer";
 
 type DialogsPropsType={
     dialogs: DialogsType[]
@@ -26,7 +27,7 @@ export const Dialogs = (props:DialogsPropsType) => {
                 <div className={style.message}>
                     {props.dialogs.map(m=> <Message key={m.text} message={m.text}/> )}
                     <input value={props.newMessage} onChange={(e)=>props.changeMessage(e.currentTarget.value)}/>
-                    <button onClick={()=>props.dispatch({type:"ADD-Message"})} >add</button>
+                    <button onClick={()=>props.dispatch(addMessageAC())} >add</button>
                 </div>
             </div>
         </div>

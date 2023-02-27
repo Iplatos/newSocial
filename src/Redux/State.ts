@@ -1,4 +1,6 @@
 import {AppPropsType} from "../App";
+import {profileReducer} from "./ProfileReducer";
+import {dialogsReducer} from "./DialogsReducer";
  let rerenderEntireTree = () => {
      console.log("./rerenderEntireTree")
  }  ;
@@ -37,19 +39,20 @@ export const store:AppPropsType = {
     subscribe(observer:any){
         rerenderEntireTree = observer
     }, dispatch(action:any){
-if (action.type == "ADD-POST"){
+        dialogsReducer(store.getState, action)
+/*if (action.type == "ADD-POST"){
     let newPost = {message:store._state.newPostText, likesCount:0 }
     store._state = {...store._state, posts:[newPost , ...store._state.posts]}
     console.log(store._state)
     store._state.newPostText = ""
-    rerenderEntireTree()
-}if (action.type == "ADD-Message"){
+    rerenderEntireTree()*/
+}/*if (action.type == "ADD-Message"){
     const newMessage = {text:store.getState().newMessage}
             store._state={...store._state, dialogs:[newMessage ,...store._state.dialogs]}
             store._state.newMessage = ""
             rerenderEntireTree()
-        }
+        }*/
     }
-}
+
 
 
