@@ -8,38 +8,47 @@ import {Route, Routes} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
+import {store} from "./Redux/State";
 // 33 v 7m
 
- export type AppPropsType = {
-        _state:State
-     changeText:(t:string)=>void
-     addPost:(text:string)=>void
-     subscribe:(obs:any)=>void
-     rerenderEntireTree:()=>void
-     getState:()=>State
+export type PostType = {
+    id: number,
+    message: string,
+    likeCount: number
 }
-export type MessagesType ={
-    id:number
-    userName:string
+
+export type MessageType = {
+    id: number,
+    message: string
 }
-export type PostsType = {
-    message:string
-    likesCount:number
+
+export type DialogType = {
+    id: number,
+    name: string
 }
-export type DialogsType = {
-    text:string
+
+export type ProfilePageType = {
+    posts: PostType[],
+    newPostText: string
 }
-export type State = {
-    messages: MessagesType[]
-    posts: PostsType[]
-    dialogs: DialogsType[]
-    newPostText:string
+
+export type DialogPageType = {
+    messages: MessageType[]
+    dialogs: DialogType[]
+    NewMessageBody : string
+
+}
+
+export type StateAppType = {
+    profilePage: ProfilePageType
+    dialogsPage: DialogPageType
+
+}
+export type storePropsType = {
+    _state:StateAppType
 }
 
 function App(props:any) {
-
-    const {store} = props
-    console.log(store)
     return (
 
             <div className="app-wrapper">
@@ -47,8 +56,8 @@ function App(props:any) {
                 <div className={"container"}>
                     <Navbar/>
                 <Routes>
-                    <Route path={"profile"} element={<Profile posts={store.getState().posts} changeText={store.changeText} addPost={store.addPost.bind(store)} newPostText={store.getState().newPostText}/>} />
-                    <Route path={"dialogs/*"} element={<Dialogs messages={store.getState().messages} dialogs={store.getState().dialogs}/>} />
+                    <Route path={"profile"} element={<Profile profilePage={props.state.profilePage} dispatch={store.dispatch}/>} />
+                    <Route path={"dialogs/*"} element={<Dialogs dialogsPage={props.state.dialogsPage} dispatch={store.dispatch} />} />
                     <Route path={"news"} element={<News/>} />
                     <Route path={"music"} element={<Music/>} />
                     <Route path={"settings"} element={<Settings/>} />

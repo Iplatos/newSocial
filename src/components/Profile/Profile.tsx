@@ -2,24 +2,26 @@ import React from 'react';
 import {MyPosts} from "../myPosts/MyPosts";
 import style from "./../../common/Container.module.css"
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {PostsType} from "../../App";
+import {PostType} from "../../App";
 
 
 type ProfileType = {
-    posts: PostsType[]
-    newPostText:string
-    changeText:(t:string)=>void
-    addPost:(t:string)=>void
+    profilePage: {
+        posts:PostType[]
+        newPostText:string
+    }
+   dispatch:({})=>void
+
 }
 export const Profile = (props:ProfileType) => {
 
-
+    console.log(props)
 
     return (
         <div className={style.container}>
             <ProfileInfo/>
 
-            <MyPosts newPostText={props.newPostText} changeText={props.changeText} addPost = {props.addPost} posts={props.posts}/>
+            <MyPosts newPostText={props.profilePage.newPostText} dispatch={props.dispatch} posts={props.profilePage.posts}/>
         </div>
     );
 };
