@@ -4,8 +4,8 @@ import style from "./Dialogs.module.css"
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {DialogType, MessageType} from "../../App";
+import {sendMessageAC, updateNewPostBody} from "../../Redux/dialogsPageReducer";
 
-import { sendMessageAC, updateNewPostBody} from "../../Redux/State";
 
 
 type DialogsPropsType={

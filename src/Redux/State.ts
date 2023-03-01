@@ -1,15 +1,12 @@
 import {StateAppType, storePropsType} from "../App";
+import {dialogsPageReducer} from "./dialogsPageReducer";
+import {profilePageReducer} from "./profilePageReducer";
 
 
-let rerenderEntireTree = () => {
+export let rerenderEntireTree = () => {
     console.log("./rerenderEntireTree")
 };
 
-
-
-
-
-console.log("state")
 export const store = {
     _state: {
 
@@ -61,41 +58,15 @@ export const store = {
     subscribe(observer: any) {
         rerenderEntireTree = observer
     },
-    dispatch(action:any) {
-        if (action.type === "ADD-POST") {
+/*    dispatch(action:any) {
+       this._state.profilePage = dialogsPageReducer(store._state.profilePage, action )
+       this._state.dialogsPage = profilePageReducer(store._state.dialogsPage, action )
+        this.subscribe(this._state)
 
-            let newPost = {id :23, message: store._state.profilePage.newPostText, likesCount: 0}
-            store._state.profilePage.posts.push(newPost)
-            store.getState().profilePage.newPostText = ""
-            rerenderEntireTree()
-        }
+    }*/
 
-        if (action.type === "UPDATE-NEW-POST-TEXT") {
-            store._state.profilePage.newPostText = action.newText
-            rerenderEntireTree()
-        }
-        if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
-            store._state.dialogsPage.NewMessageBody = action.newMessage
-            rerenderEntireTree()
-        }
-        if (action.type ==="SEND-NEW-MESSAGE-BODY"){
-            let newMessage = {id:10, message:store.getState().dialogsPage.NewMessageBody}
-            store._state.dialogsPage.messages.push(newMessage)
-            rerenderEntireTree()
-        }
-    }
 }
-export const addPostAC = () => {
-    return {type: "ADD-POST"} as const
-}
-export const onPostChangeAC = (newText:string) => {
-    return {type:"UPDATE-NEW-POST-TEXT", newText}as const
-}
-export const updateNewPostBody = (newMessage:string) => {
-    return {type:"UPDATE-NEW-MESSAGE-BODY", newMessage}
-}
-export const sendMessageAC = () => {
-    return {type:"SEND-NEW-MESSAGE-BODY"}
-}
-type addPostACType = ReturnType<typeof addPostAC>
+
+
+
 

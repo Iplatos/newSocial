@@ -1,7 +1,7 @@
 import React, {ChangeEvent, RefObject} from 'react';
 import {Post} from "./Post/Post";
 import {PostType} from "../../App";
-import {addPostAC, onPostChangeAC} from "../../Redux/State";
+import {addPostAC, onPostChangeAC} from "../../Redux/profilePageReducer";
 
 
 type PropsType = {
