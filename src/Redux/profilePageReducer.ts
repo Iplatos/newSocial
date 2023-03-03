@@ -35,4 +35,4 @@ export const onPostChangeAC = (newText:string) => {
     return {type:"UPDATE-NEW-POST-TEXT", newText}as const
 }
 
-type PostACType = ReturnType<typeof addPostAC> | ReturnType<typeof onPostChangeAC>
+ export type PostACType = ReturnType<typeof addPostAC> | ReturnType<typeof onPostChangeAC>

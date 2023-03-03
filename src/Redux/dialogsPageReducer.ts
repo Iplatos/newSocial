@@ -31,7 +31,7 @@ switch (action.type){
     case "SEND-NEW-MESSAGE-BODY" :
         let newMessage = {id:10, message:state.NewMessageBody}
 
-        return {...state, messages:[newMessage, ...state.messages]}
+        return {...state, messages:[newMessage, ...state.messages], NewMessageBody:""}
     default:
         return state
 }
@@ -44,3 +44,4 @@ export const updateNewPostBody = (newMessage:string) => {
 export const sendMessageAC = () => {
     return {type:"SEND-NEW-MESSAGE-BODY"}
 }
+export type DialogsReducerType = ReturnType<typeof updateNewPostBody> | ReturnType<typeof updateNewPostBody>

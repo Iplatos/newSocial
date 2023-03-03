@@ -18,6 +18,7 @@ export const Navbar = () => {
         <nav className={s.nav}>
             <div className={navColor("profile")} onClick={() => redirectTo("profile")}>Profile</div>
             <div className={navColor("dialogs")} onClick={() => redirectTo("dialogs")}>Messages</div>
+            <div className={navColor("users")} onClick={() => redirectTo("users")}>Users</div>
             <div className={navColor("news")} onClick={() => redirectTo("news")}>News</div>
             <div className={navColor("music")} onClick={() => redirectTo("music")}>Music</div>
             <div className={navColor("settings")} onClick={() => redirectTo("settings")}>Settings</div>

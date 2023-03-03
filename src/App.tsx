@@ -10,6 +10,7 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "./Redux/ReduxStore";
+import UsersContainer from "./components/Users/UsersContainer";
 // 33 v 7m
 
 export type PostType = {
@@ -62,6 +63,7 @@ function App() {
                     <Route path={"profile"} element={<Profile profilePage={profilePage}/>} />
                     <Route path={"dialogs/*"} element={<Dialogs dialogsPage={dialogsPage}  />} />
                     <Route path={"news"} element={<News/>} />
+                    <Route path={"users"} element={<UsersContainer/>} />
                     <Route path={"music"} element={<Music/>} />
                     <Route path={"settings"} element={<Settings/>} />
                 </Routes>
