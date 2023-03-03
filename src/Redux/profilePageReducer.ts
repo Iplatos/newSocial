@@ -1,7 +1,4 @@
-import {rerenderEntireTree, store} from "./State";
-
-
-let initialState = {
+const initialState = {
         posts: [
             {id: 1, message: "Hi! how are you?", likesCount: 23},
             {id: 2, message: "Do you love me?", likesCount: 33},
@@ -14,16 +11,17 @@ type initialType = {
     newPostText:string
 }
 
-export const profilePageReducer = (state:initialType=initialState, action:PostACType) =>{
+export const profilePageReducer = (state:initialType=initialState, action:PostACType):initialType =>{
 switch (action.type) {
+
     case "ADD-POST":
         let newPost = {id: 23, message: state.newPostText, likesCount: 0}
         state.posts.push(newPost)
         state.newPostText = ""
-return state
+return {...state}
     case "UPDATE-NEW-POST-TEXT":
         state.newPostText = action.newText
-        return state
+        return {...state}
     default:
         return state
 }

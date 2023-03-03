@@ -5,6 +5,7 @@ import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {DialogType, MessageType} from "../../App";
 import {sendMessageAC, updateNewPostBody} from "../../Redux/dialogsPageReducer";
+import {useDispatch} from "react-redux";
 
 
 
@@ -14,18 +15,17 @@ type DialogsPropsType={
         messages:MessageType[]
         NewMessageBody:string
     }
-    dispatch:any
 }
 
 export const Dialogs = (props:DialogsPropsType) => {
 
-
+    const dispatch = useDispatch()
     const inputChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
         const newMessage = e.currentTarget.value
-        props.dispatch(updateNewPostBody(newMessage))
+        dispatch(updateNewPostBody(newMessage))
     }
 const sendMessage =() => {
-        props.dispatch(sendMessageAC())
+       dispatch(sendMessageAC())
 }
 
     return (

@@ -10,7 +10,6 @@ type ProfileType = {
         posts:PostType[]
         newPostText:string
     }
-   dispatch:({})=>void
 
 }
 export const Profile = (props:ProfileType) => {
@@ -21,7 +20,7 @@ export const Profile = (props:ProfileType) => {
         <div className={style.container}>
             <ProfileInfo/>
 
-            <MyPosts newPostText={props.profilePage.newPostText} dispatch={props.dispatch} posts={props.profilePage.posts}/>
+            <MyPosts newPostText={props.profilePage.newPostText} posts={props.profilePage.posts}/>
         </div>
     );
 };

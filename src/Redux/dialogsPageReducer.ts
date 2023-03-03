@@ -1,4 +1,3 @@
-import {store} from "./State";
 
 
 const initialState =   {
@@ -24,15 +23,15 @@ type initialStateType = {
     dialogs: {id:number, name:string}[]
     NewMessageBody:string
 }
-export const dialogsPageReducer = (state:initialStateType=initialState, action:any) =>{
+export const dialogsPageReducer = (state:initialStateType=initialState, action:any):initialStateType =>{
 switch (action.type){
     case "UPDATE-NEW-MESSAGE-BODY" :
         state.NewMessageBody = action.newMessage
-        return state
+        return {...state}
     case "SEND-NEW-MESSAGE-BODY" :
         let newMessage = {id:10, message:state.NewMessageBody}
-        state.messages.unshift(newMessage)
-        return state
+
+        return {...state, messages:[newMessage, ...state.messages]}
     default:
         return state
 }
