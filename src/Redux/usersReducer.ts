@@ -1,21 +1,15 @@
 const initialState = {
     users: [
-        {id: 1, followed:false, fullName: "Hi! how are you?", status: "Hello", location:{
-            city:"SMinsk", country:"Belarus"
-            }}, {id: 2,followed:true, fullName: "are you?", status: "NeHello", location:{
-            city:"EMinsk", country:"RBelarus"
-            }}, {id: 3,followed:false, fullName: "Hi! you?", status: "WWWHello", location:{
-            city:"FMinsk", country:"IBelarus"
-            }}, {id: 4,followed:true, fullName: "Hi! ?", status: "Halo", location:{
-            city:"SMinsk", country:"NeBelarus"
-            }},
+        {id: 1, followed:false, photos:{small:"", large:""}, name: "Hi! how are you?", status: "Hello",
+            }, {id: 2,followed:true,photos:{small:"", large:""}, name: "are you?", status: "NeHello",
+            }, {id: 3,followed:false,photos:{small:"", large:""}, name: "Hi! you?", status: "WWWHello",
+            }, {id: 4,followed:true,photos:{small:"", large:""}, name: "Hi! ?", status: "Halo",
+            },
 
 
     ],
 }
-export type UsersType = {id:number,followed:boolean, fullName:string, status:string, location:{
-        city:string, country:string
-    }}
+export type UsersType = {id:number,followed:boolean,photos:{small:string, large:string}, name:string, status:string}
 type initialType = {
 users:UsersType[]
 }
