@@ -6,7 +6,7 @@ import {UsersType} from "../../Redux/usersReducer";
 
 
 export const Users =(props:any) => {
-
+    console.log(props.isLoading)
     let pagesCount = Math.ceil(props.totalUserCount/props.pageSize)
     let pages = []
     for (let i = 1; i<=pagesCount; i++){

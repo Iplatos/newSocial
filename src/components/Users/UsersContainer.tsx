@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 
 import {AppDispatch, AppRootStateType} from "../../Redux/ReduxStore";
 import {
-    followAC,
+    followAC, isUserLoadingAC,
     setCurrentPageAC,
     setUsersAC,
     setUserTotalCountAC,
@@ -16,7 +16,8 @@ const mapStateToProps = (state:AppRootStateType)=> {
         users:state.users.users,
         currentPage:state.users.currentPage,
         totalUserCount:state.users.totalUserCount,
-        pageSize : state.users.pageSize
+        pageSize : state.users.pageSize,
+        isLoading: state.users.isLoading
     }
 }
 
@@ -35,6 +36,9 @@ const mapDispatchToProps = (dispatch:AppDispatch)=> {
         },
         setUsersTotalCount(p:number){
             dispatch(setUserTotalCountAC(p))
+        },
+        isUserLoading(isLoading:boolean){
+            dispatch(isUserLoadingAC(isLoading))
         }
     }
 }

@@ -8,7 +8,8 @@ const initialState = {
     ],
     pageSize:10,
     totalUserCount:40,
-    currentPage:3
+    currentPage:3,
+    isLoading:false
 }
 export type UsersType = {id:number,followed:boolean,photos:{small:string, large:string}, name:string, status:string}
 type initialType = {
@@ -16,6 +17,7 @@ users:UsersType[]
     pageSize:number
     totalUserCount:number
     currentPage:number
+    isLoading:boolean
 }
 
 export const usersReducer = (state:initialType=initialState, action:UsersACType):initialType =>{
@@ -38,6 +40,8 @@ return {...state, users: state.users.map(user => user.id === action.id ? {...use
             return {...state, currentPage:action.page}
         case "SET-USER-TOTAL-Count":
             return {...state, totalUserCount:action.users}
+        case "SET-USER-Loading":
+            return {...state, isLoading:action.isLoading}
         default:
             return state
     }
@@ -59,5 +63,11 @@ export const setCurrentPageAC = (page:number) => {
 export const setUserTotalCountAC = (users:number) => {
     return {type:"SET-USER-TOTAL-Count", users}as const
 }
+export const isUserLoadingAC = (isLoading:boolean) => {
+    return {type:"SET-USER-Loading", isLoading}as const
+}
 
-export type UsersACType = ReturnType<typeof followAC> | ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>| ReturnType<typeof setCurrentPageAC>| ReturnType<typeof setUserTotalCountAC>
+export type UsersACType = ReturnType<typeof followAC>
+    | ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>| ReturnType<typeof setUserTotalCountAC>
+    | ReturnType<typeof isUserLoadingAC>

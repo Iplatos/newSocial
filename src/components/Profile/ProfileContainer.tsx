@@ -17,6 +17,8 @@ export type PropsType = {
     pageSize:number
     totalUserCount:number
     currentPage:number
+    isUserLoading: (isLoading:boolean) => void
+    isLoading:boolean
 
 }
 
@@ -27,7 +29,11 @@ export class UsersAPIComponent extends React.Component<PropsType, any> {
 
     }
     componentDidMount() {
+
+        this.props.isUserLoading(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(res => this.props.setUsers(res.data.items))
+        this.props.isUserLoading(false)
+
     }
 
 
@@ -35,14 +41,24 @@ export class UsersAPIComponent extends React.Component<PropsType, any> {
         isFollow ? this.props.unFollow(id) : this.props.follow(id)
     }
     changeCurrentPage = (p:number) => {
+
+        this.props.isUserLoading(true)
         this.props.setCurrentPage(p)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`).then(res => this.props.setUsers(res.data.items))
-
+        this.props.isUserLoading(false)
     }
+
     render() {
 
-        return <Users users={this.props.users} totalUserCount={this.props.totalUserCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} changeCurrentPage = {this.changeCurrentPage} followUser={this.followUser}/>
 
+        return (
+          <>  {this.props.isLoading && <div style={{width:"300px", height:"400px", backgroundColor:"red"}}>asdad</div>}
+        <Users isUserLoading={this.props.isUserLoading} users={this.props.users}
+               totalUserCount={this.props.totalUserCount} pageSize={this.props.pageSize}
+               currentPage={this.props.currentPage} changeCurrentPage={this.changeCurrentPage}
+               followUser={this.followUser} isLoading={this.props.isLoading}/>
+</>
+)
     }
 }
 

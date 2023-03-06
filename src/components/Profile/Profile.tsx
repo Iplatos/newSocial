@@ -10,7 +10,6 @@ type ProfileType = {
         posts:PostType[]
         newPostText:string
     }
-
 }
 export const Profile = (props:ProfileType) => {
 
