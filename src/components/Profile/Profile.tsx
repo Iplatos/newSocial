@@ -2,7 +2,7 @@ import React from 'react';
 import {MyPosts} from "../myPosts/MyPosts";
 import style from "./../../common/Container.module.css"
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {PostType} from "../../App";
+import {PostType, StateAppType} from "../../App";
 
 
 type ProfileType = {
