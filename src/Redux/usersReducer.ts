@@ -6,8 +6,8 @@ const initialState = {
 
 
     ],
-    pageSize:4,
-    totalUserCount:10,
+    pageSize:10,
+    totalUserCount:40,
     currentPage:3
 }
 export type UsersType = {id:number,followed:boolean,photos:{small:string, large:string}, name:string, status:string}

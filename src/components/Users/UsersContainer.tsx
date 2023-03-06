@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {Users} from "./Users"
+
 import {AppDispatch, AppRootStateType} from "../../Redux/ReduxStore";
 import {
     followAC,
@@ -9,6 +9,7 @@ import {
     unFollowAC,
     UsersType
 } from "../../Redux/usersReducer";
+import {UsersAPIComponent} from "../Profile/ProfileContainer";
 
 const mapStateToProps = (state:AppRootStateType)=> {
     return {
@@ -37,4 +38,4 @@ const mapDispatchToProps = (dispatch:AppDispatch)=> {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Users)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
