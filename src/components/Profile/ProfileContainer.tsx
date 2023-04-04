@@ -2,7 +2,7 @@ import React from 'react';
 import {AppDispatch, AppRootStateType} from "../../Redux/ReduxStore";
 import {followAC, setUsersAC, unFollowAC, UsersType} from "../../Redux/usersReducer";
 import axios from "axios";
-import {Users} from "../Users/Users";
+import {UsersC} from "../Users/UsersC";
 
 
 
@@ -53,7 +53,7 @@ export class UsersAPIComponent extends React.Component<PropsType, any> {
 
         return (
           <>  {this.props.isLoading && <div style={{width:"300px", height:"400px", backgroundColor:"red"}}>asdad</div>}
-        <Users isUserLoading={this.props.isUserLoading} users={this.props.users}
+        <UsersC isUserLoading={this.props.isUserLoading} users={this.props.users}
                totalUserCount={this.props.totalUserCount} pageSize={this.props.pageSize}
                currentPage={this.props.currentPage} changeCurrentPage={this.changeCurrentPage}
                followUser={this.followUser} isLoading={this.props.isLoading}/>

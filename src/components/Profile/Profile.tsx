@@ -13,7 +13,6 @@ type ProfileType = {
 }
 export const Profile = (props:ProfileType) => {
 
-    console.log(props)
 
     return (
         <div className={style.container}>

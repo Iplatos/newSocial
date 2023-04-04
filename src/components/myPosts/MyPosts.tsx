@@ -32,7 +32,7 @@ const dispatch = useDispatch()
             <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText}/>
             <button onClick={() => addPostClick(newPostElement)}>add posts</button>
             {props.posts.map(p => <Post key={p.message} message={p.message} likesCount={p.likesCount}/>)}
-
+            {800/12}
         </div>
     );
 };
