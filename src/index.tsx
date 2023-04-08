@@ -7,8 +7,7 @@ import App from './App';
 let rerenderEntireTree = () => {
     ReactDOM.render(
                 <App/>
-        ,
-        document.getElementById('root')
+        , document.getElementById('root')
     );
 }
 rerenderEntireTree()

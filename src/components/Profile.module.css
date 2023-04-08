@@ -1,0 +1,8 @@
+.profile{
+    grid-area: c;
+    background-color: springgreen;
+}
+.profile img{
+    background-size: cover;
+    width: 100%;
+}

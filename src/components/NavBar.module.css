@@ -1,0 +1,14 @@
+.nav{
+    grid-area: n;
+    background-color:blueviolet ;
+}
+.item{
+    color:white;
+}
+.item:hover{
+    color:yellow;
+    cursor: pointer;
+}
+.active{
+    color:red;
+}
