@@ -8,7 +8,13 @@ display: grid;
           "h h"
   "n c";
   grid-gap:10px;
+  z-index: 0;
 }
+.appWrapperContent{
+  grid-area: c;
+  background-color: springgreen;
+}
+
 
 
 
