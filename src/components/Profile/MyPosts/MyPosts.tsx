@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import MyPost from "./Post/MyPost";
 
-const MyPosts = () => {
+const MyPosts = (props: any) => {
+    const newPostElement = React.createRef<HTMLTextAreaElement>()
+
+    let addPost = () => {
+        const text = newPostElement.current?.value
+        console.log(text)
+    }
+
     return (
         <div>
             <h3>My Posts</h3>
-            <textarea/>
-            <button>Add Post</button>
+            <textarea ref={newPostElement}/>
+            <button onClick={addPost}>Add Post</button>
             <button>Remove</button>
-            <MyPost message={"hello"} likeCount={12}/>
-            <MyPost message={"im ready"} likeCount={23}/>
+            {props.posts.map((p: any) => (<MyPost key={p.id} message={p.message} likeCount={p.likeCount}/>))}
+
         </div>
     );
 };
