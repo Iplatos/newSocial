@@ -9,9 +9,15 @@ const NavBar = () => {
                 <NavLink className = { navData => navData.isActive ? s.active : s.item } to={'/profile'}>Profile</NavLink>
             </div>
             <div className={`${s.item}`}><NavLink className = { navData => navData.isActive ? s.active : s.item }  to={"/messages"}>Messages</NavLink></div>
-            <div className={s.item}><a>News</a></div>
-            <div className={s.item}><a>Music</a></div>
-            <div className={s.item}><a>Settings</a></div>
+            <div className={s.item}>
+                <NavLink to="/news" className = { navData => navData.isActive ? s.active : s.item }> News</NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to="/music" className = { navData => navData.isActive ? s.active : s.item }> Music</NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to="/settings" className = { navData => navData.isActive ? s.active : s.item }> Settings</NavLink>
+            </div>
         </nav>
     );
 };
