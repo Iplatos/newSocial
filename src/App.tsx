@@ -18,10 +18,8 @@ function App() {
                 {/* <Profile/>*/}
                 <div className={"appWrapperContent"}>
                     <Routes>
-                   <Route path={"/messages"} element={<Dialogs/>}/>
+                   <Route path={"/messages/*"} element={<Dialogs/>}/>
                    <Route path={"/profile"} element={<Profile/>}/>
-                        <Route path={"*"} element={<Navigate to={"/404"}/>}/>
-                        <Route path={'/404'} element={<h1>PAGE NOT FOUND</h1>}/>
                     </Routes>
                 </div>
 
