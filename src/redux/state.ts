@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../index";
+
 export type PostType = {
     id: number,
     message: string,
@@ -22,7 +24,7 @@ export type ProfilePageType = {
 export type DialogPageType = {
     messages: MessageType[]
     dialogs: DialogType[]
-    NewMessageBody : string
+    NewMessageBody: string
 
 }
 
@@ -32,7 +34,7 @@ export type StateAppType = {
 
 }
 export type storePropsType = {
-    _state:StateAppType
+    _state: StateAppType
 }
 
 export const state = {
@@ -62,15 +64,12 @@ export const state = {
 
 export const store = {
     _state: {
-
         profilePage: {
-
             posts: [
                 {id: 1, message: "Hi! how are you?", likeCount: 23},
                 {id: 2, message: "Do you love me?", likeCount: 33},
-
             ],
-            newPostText: ""
+            newPostText: "s"
         },
 
         dialogsPage: {
@@ -88,7 +87,7 @@ export const store = {
                 {id: 4, name: "Gena"},
                 {id: 5, name: "Kolya"}
             ],
-            NewMessageBody : ""
+            NewMessageBody: ""
         }
     },
     getState() {
@@ -100,22 +99,20 @@ export const store = {
     },
     subcribe(observer: () => void) {
         this._callSubscriber = observer
-    },}
-    /*_addPost(message: string) {
+    },
+    addPost() {
 
-        let newPost = {id: 5, message: this._state.profilePage.newPostText, likecount: 3}
+        let newPost = {id: 5, message: this._state.profilePage.newPostText, likeCount: 3}
         this._state.profilePage.posts.push(newPost)
         this._callSubscriber(this._state);
-        this._updateNewPostText("")
-        },
+        this.updateNewPostText("")
+    },
 
 
-    _updateNewPostText(newText: string) {
-     },
-    */
-
-
-/*    dispatch (action: any) {
+    updateNewPostText(newText: string) {
+        this._state.profilePage.newPostText = newText
+    },
+    dispatch (action: any) {
         if (action.type === "ADD-POST") {
             let newPost = {id: 5, message: this._state.profilePage.newPostText, likeCount: 3}
             this._state.profilePage.posts.push(newPost)
@@ -124,8 +121,9 @@ export const store = {
 
 
         } else if (action.type === "UPDATE-NEW_POST_TEXT") {
-            this._state.profilePage.newPostText = action.payload.newText
-            this._callSubscriber(action.payload.newText);
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(action.newText);
+            console.log(action.newText)
 
         } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
             this._state.dialogsPage.NewMessageBody = action.payload.body
@@ -138,9 +136,24 @@ export const store = {
             this._callSubscriber(this._state);
         }
     }
-}*/
+}
 
-/*
+/*_addPost(message: string) {
+
+    let newPost = {id: 5, message: this._state.profilePage.newPostText, likecount: 3}
+    this._state.profilePage.posts.push(newPost)
+    this._callSubscriber(this._state);
+    this._updateNewPostText("")
+    },
+
+
+_updateNewPostText(newText: string) {
+ },
+*/
+
+
+/*    */
+
 export type ReduceType = AddPostACType | UpdateNewPostTextACType | UpdateNewMessageBodyAC | SendNewMessageAC
 
 type AddPostACType = ReturnType<typeof AddPostAC>
@@ -175,7 +188,6 @@ export let SendNewMessageAC = () => {
         payload: {}
     } as const
 }
-*/
 
 
 //redux система управления состоянием

@@ -12,6 +12,8 @@ import {storePropsType} from "./redux/state";
 // 37
 
 function App(props:any) {
+    console.log(props)
+    console.log("app")
     return (
         <div className={"App-Wrapper"}>
 
@@ -19,8 +21,8 @@ function App(props:any) {
               <NavBar/>
                 <div className={"appWrapperContent"}>
                     <Routes>
-                   <Route path={"/messages/*"} element={<Dialogs dialogs={props.state.dialogsPage}/>}/>
-                   <Route path={"/profile"} element={<Profile posts={props.state.posts}/>}/>
+                   <Route path={"/messages/*"} element={<Dialogs dialogs={props.store.dialogsPage}/>}/>
+                   <Route path={"/profile"} element={<Profile posts={props.store.profilePage} dispatch={props.dispatch}/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>
                     </Routes>
