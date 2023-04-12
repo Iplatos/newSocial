@@ -95,7 +95,8 @@ export const store = {
         return this._state
     },
     _callSubscriber(props: StateAppType) {
-        console.log("state is changed")
+
+        rerenderEntireTree()
     },
     subcribe(observer: () => void) {
         this._callSubscriber = observer
@@ -103,6 +104,7 @@ export const store = {
     addPost() {
 
         let newPost = {id: 5, message: this._state.profilePage.newPostText, likeCount: 3}
+        console.log(this)
         this._state.profilePage.posts.push(newPost)
         this._callSubscriber(this._state);
         this.updateNewPostText("")
@@ -115,15 +117,17 @@ export const store = {
     dispatch (action: any) {
         if (action.type === "ADD-POST") {
             let newPost = {id: 5, message: this._state.profilePage.newPostText, likeCount: 3}
+            console.log(this)
             this._state.profilePage.posts.push(newPost)
             this._callSubscriber(this._state);
             this._state.profilePage.newPostText = ""
 
 
         } else if (action.type === "UPDATE-NEW_POST_TEXT") {
+            console.log(this)
+            console.log("this")
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(action.newText);
-            console.log(action.newText)
 
         } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
             this._state.dialogsPage.NewMessageBody = action.payload.body
