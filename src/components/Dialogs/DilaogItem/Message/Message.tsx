@@ -1,10 +1,11 @@
 import React from 'react';
 import s from "../../Dialogs.module.css";
 
-const Message = (props:any) => {
+const Message = (props:{message:string}) => {
+
     return (
         <div className={s.messages}>
-            {props.messages.map((m:any)=><Message message={m.message}/>)}
+         <div>{props.message}</div>
 
 
         </div>

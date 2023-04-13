@@ -17,17 +17,17 @@ function App() {
     return (
         <div className={"App-Wrapper"}>
 
-               <Header/>
-              <NavBar/>
-                <div className={"appWrapperContent"}>
-                    <Routes>
-                   <Route path={"/messages/*"} element={<Dialogs />}/>
-                   <Route path={"/profile"} element={<Profile />}/>
-                   <Route path={"/news"} element={<News />}/>
-                        <Route path="/music" element={<Music/>}/>
-                        <Route path="/settings" element={<Settings/>}/>
-                    </Routes>
-                </div>
+            <Header/>
+            <NavBar/>
+            <div className={"appWrapperContent"}>
+                <Routes>
+                    <Route path={"/messages/*"} element={<Dialogs/>}/>
+                    <Route path={"/profile"} element={<Profile/>}/>
+                    <Route path={"/news"} element={<News/>}/>
+                    <Route path="/music" element={<Music/>}/>
+                    <Route path="/settings" element={<Settings/>}/>
+                </Routes>
+            </div>
 
 
         </div>

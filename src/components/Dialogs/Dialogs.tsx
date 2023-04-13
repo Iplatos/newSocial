@@ -5,11 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {DialogPageType, StateAppType} from "../../redux/state";
 import {useAppSelector} from "../../redux/redux-store";
 import {SendNewMessageAC, UpdateNewMessageBodyAC} from "../../redux/dialogsReducer";
+import Message from "./DilaogItem/Message/Message";
 
-
-const Message = (props: { message: string }) => {
-    return <div className={s.message}>{props.message}</div>
-}
 
 const Dialogs = () => {
     const dialogsPage = useAppSelector<DialogPageType>(state=>state.dialogsReducer)
