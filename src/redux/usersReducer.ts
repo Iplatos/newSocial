@@ -65,4 +65,5 @@ export const getUserTC = () => async (dispatch: Dispatch) => {
     const data = await userApi.getUsers()
     dispatch(getUserAC(data.data.items))
     console.log(data.data.items)
+    return data.data.items
 }
