@@ -43,9 +43,9 @@ export const usersReducer = (state: UsersStateType = initialState, action: actio
         case "GET-USERS":
             return {...state, ...action.users}
         case "FOLLOW-USERS":
-            return {...state, items: state.items.map(u => u.id === 4 ? {...u, followed: true} : u)}
+            return {...state, items: state.items.map(u => u.id === action.userId ? {...u, followed: true} : u)}
         case "UNFOLLOW-USERS":
-            return {...state, items: state.items.map(u => u.id === 4 ? {...u, followed: false} : u)}
+            return {...state, items: state.items.map(u => u.id === action.userId ? {...u, followed: false} : u)}
         case "GET-TOTAL-USERS-COUNT":
             return {...state, totalCount: action.totalCount}
         case "SET-CURRENT-PAGE":
@@ -64,10 +64,10 @@ type actionType = ReturnType<typeof getUserAC> | ReturnType<typeof unFollowUser>
 export const getUserAC = (users: UsersStateType) => {
     return {type: "GET-USERS", users } as const
 }
-export const unFollowUser = ( userId: string) => {
+export const unFollowUser = ( userId: number) => {
     return {type: "FOLLOW-USERS", userId} as const
 }
-export const followUser = (userId: string) => {
+export const followUser = (userId: number) => {
     return {type: "UNFOLLOW-USERS", userId} as const
 }
 export const getTotalUsersCount = (totalCount: number) => {
