@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {getUserTC} from "../../redux/usersReducer";
 import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../redux/redux-store";
 import Photo from "./../../assets/hqdefault.jpg"
 
 export const Users = (props:any) => {

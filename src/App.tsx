@@ -10,7 +10,6 @@ import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import UsersContainer from "./components/Users/usersContainer";
 
-/*53*/
 
 function App() {
 
@@ -26,8 +25,8 @@ function App() {
                     <Route path={"/profile"} element={<Profile/>}/>
                     <Route path={"/news"} element={<News/>}/>
                     <Route path={"/users"} element={<UsersContainer />}/>
-                    <Route path="/music" element={<Music/>}/>
-                    <Route path="/settings" element={<Settings/>}/>
+                    <Route path={"/music"} element={<Music/>}/>
+                    <Route path={"/settings"} element={<Settings/>}/>
                 </Routes>
             </div>
 
