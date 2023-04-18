@@ -5,11 +5,8 @@ import Photo from "../../assets/hqdefault.jpg";
 import axios from "axios";
 
 const UsersPres = (props: any) => {
-    const onPageClick = (p: number) => {
-        props.setCurrentPage(p)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.pageSize}`).then(res => props.setUsers(res.data))
 
-    }
+
     console.log(props)
     let pageCurrentCount = props.totalCount / props.pageSize
     let pages = []
@@ -17,10 +14,9 @@ const UsersPres = (props: any) => {
         pages.push(i)
     }
 
-
     return (
         <div>
-            {pages.map(p => <span onClick={() => onPageClick(p)} key={p}
+            {pages.map(p => <span onClick={() => props.onPageChanged(p)} key={p}
                                   className={p === props.currentPage ? s.selectedPage : ""}>{p}</span>)}
 
             {

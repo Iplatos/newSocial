@@ -17,7 +17,8 @@ const initialState = {
     totalCount: 0,
     error: null,
     pageSize:10,
-    currentPage:2
+    currentPage:2,
+    isFetching:false
 }
 
 export type itemType = {
@@ -35,7 +36,8 @@ export type UsersStateType = {
     totalCount: number
     error: null | string
     pageSize:number,
-    currentPage:number
+    currentPage:number,
+    isFetching: boolean
 }
 
 export const usersReducer = (state: UsersStateType = initialState, action: actionType) => {
@@ -50,6 +52,8 @@ export const usersReducer = (state: UsersStateType = initialState, action: actio
             return {...state, totalCount: action.totalCount}
         case "SET-CURRENT-PAGE":
             return {...state,currentPage:action.pageNumber}
+        case "TOGGLE-IS-FETCHING":
+            return {...state, isFetching:action.value}
         default:
             return state
     }
@@ -58,7 +62,7 @@ export const usersReducer = (state: UsersStateType = initialState, action: actio
 }
 
 
-type actionType = ReturnType<typeof getUserAC> | ReturnType<typeof unFollowUser> | ReturnType<typeof followUser> | ReturnType<typeof getTotalUsersCount> | ReturnType<typeof setCurrentPage>
+type actionType = ReturnType<typeof getUserAC> | ReturnType<typeof unFollowUser> | ReturnType<typeof followUser> | ReturnType<typeof getTotalUsersCount> | ReturnType<typeof setCurrentPage> | ReturnType<typeof isFetchingUsers>
 
 
 export const getUserAC = (users: UsersStateType) => {
@@ -75,6 +79,9 @@ export const getTotalUsersCount = (totalCount: number) => {
 }
 export const setCurrentPage = (pageNumber: number) => {
     return {type: "SET-CURRENT-PAGE", pageNumber} as const
+}
+export const isFetchingUsers = (value:boolean) => {
+    return {type: "TOGGLE-IS-FETCHING", value} as const
 }
 export const getUserTC = () => async (dispatch: Dispatch) => {
     const data = await userApi.getUsers()
