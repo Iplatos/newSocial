@@ -62,10 +62,10 @@ export const usersReducer = (state: UsersStateType = initialState, action: actio
 }
 
 
-type actionType = ReturnType<typeof getUserAC> | ReturnType<typeof unFollowUser> | ReturnType<typeof followUser> | ReturnType<typeof getTotalUsersCount> | ReturnType<typeof setCurrentPage> | ReturnType<typeof isFetchingUsers>
+export type actionType = ReturnType<typeof getUser> | ReturnType<typeof unFollowUser> | ReturnType<typeof followUser> | ReturnType<typeof getTotalUsersCount> | ReturnType<typeof setCurrentPage> | ReturnType<typeof isFetchingUsers>
 
 
-export const getUserAC = (users: UsersStateType) => {
+export const getUser = (users: UsersStateType) => {
     return {type: "GET-USERS", users } as const
 }
 export const unFollowUser = ( userId: number) => {
@@ -85,7 +85,7 @@ export const isFetchingUsers = (value:boolean) => {
 }
 export const getUserTC = () => async (dispatch: Dispatch) => {
     const data = await userApi.getUsers()
-    dispatch(getUserAC(data.data.items))
+    dispatch(getUser(data.data.items))
     dispatch(getTotalUsersCount(data.data.totalCount))
     return data.data.items
 }
